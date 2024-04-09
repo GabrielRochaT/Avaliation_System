@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="Img">
+    <file>../../../../Downloads/voto-positivo.png</file>
+    <file>../../../../Downloads/voto-negativo.png</file>
+    <file>ruim.png</file>
+    <file>reveja (2).png</file>
+  </qresource>
+</RCC>

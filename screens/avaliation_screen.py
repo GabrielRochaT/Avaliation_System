@@ -9,16 +9,21 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from utils import classify
+from utils.classify_msg import classify
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(765, 669)
-        MainWindow.setWindowTitle("Avaliação")
-        MainWindow.setStyleSheet("background-color: rgb(48, 48, 48);")
-        MainWindow.setDockNestingEnabled(False)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class Ui_Avaliation(object):
+    def setupUi(self, Avaliation):
+        Avaliation.setObjectName("Avaliation")
+        Avaliation.resize(765, 669)
+        Avaliation.setMinimumSize(QtCore.QSize(765, 669))
+        Avaliation.setMaximumSize(QtCore.QSize(765, 669))
+        Avaliation.setWindowTitle("Avaliação")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/Img/reveja (2).png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Avaliation.setWindowIcon(icon)
+        Avaliation.setStyleSheet("background-color: rgb(48, 48, 48);")
+        Avaliation.setDockNestingEnabled(False)
+        self.centralwidget = QtWidgets.QWidget(Avaliation)
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(60, 0, 661, 101))
@@ -51,6 +56,7 @@ class Ui_MainWindow(object):
         self.label_3.setObjectName("label_3")
         self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
         self.plainTextEdit.setGeometry(QtCore.QRect(110, 230, 521, 192))
+        self.plainTextEdit.setStyleSheet("color: rgb(255, 255, 255);")
         self.plainTextEdit.setObjectName("plainTextEdit")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton.setGeometry(QtCore.QRect(500, 500, 131, 41))
@@ -358,23 +364,23 @@ class Ui_MainWindow(object):
         self.pushButton_2.setFont(font)
         self.pushButton_2.setStyleSheet("background-color: rgb(70, 175, 255);")
         self.pushButton_2.setObjectName("pushButton_2")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        Avaliation.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(Avaliation)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 765, 26))
         self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        Avaliation.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(Avaliation)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        Avaliation.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(Avaliation)
         self.pushButton.clicked.connect(lambda: classify(self.plainTextEdit.toPlainText()))
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(Avaliation)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, Avaliation):
         _translate = QtCore.QCoreApplication.translate
-        self.label.setText(_translate("MainWindow", "MetricsManager"))
-        self.label_2.setText(_translate("MainWindow", "Bem Vindo ao painel de avaliação, sinta-se a vontade para avaliar nosso sistema!"))
-        self.label_3.setText(_translate("MainWindow", "Insira sua avalição abaixo:"))
-        self.pushButton.setText(_translate("MainWindow", "Concluir"))
-        self.pushButton_2.setText(_translate("MainWindow", "Voltar"))
+        self.label.setText(_translate("Avaliation", "MetricsManager"))
+        self.label_2.setText(_translate("Avaliation", "Bem Vindo ao painel de avaliação, sinta-se a vontade para avaliar nosso sistema!"))
+        self.label_3.setText(_translate("Avaliation", "Insira sua avalição abaixo:"))
+        self.pushButton.setText(_translate("Avaliation", "Concluir"))
+        self.pushButton_2.setText(_translate("Avaliation", "Voltar"))

@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QFont
-from screens.avaliation_screen import Ui_MainWindow
+from screens.avaliation_screen import Ui_Avaliation
 import utils, sys
 
 def start_system():
@@ -17,7 +17,7 @@ def start_system():
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_wnd = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_Avaliation()
     ui.setupUi(main_wnd)
     main_wnd.show()
     sys.exit(app.exec_())

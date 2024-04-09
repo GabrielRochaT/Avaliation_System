@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Avaliation</class>
+ <widget class="QMainWindow" name="Avaliation">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,8 +10,24 @@
     <height>669</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>765</width>
+    <height>669</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>765</width>
+    <height>669</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string notr="true">Avaliação</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="imgs.qrc">
+    <normaloff>:/Img/reveja (2).png</normaloff>:/Img/reveja (2).png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(48, 48, 48);</string>
@@ -104,6 +120,9 @@
       <width>521</width>
       <height>192</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
@@ -1045,6 +1064,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="imgs.qrc"/>
+ </resources>
  <connections/>
 </ui>
