@@ -12,6 +12,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_Visualizar(object):
+    def back_to_menu(self):
+        from .main_menu import Ui_Menu 
+        self.menu = QtWidgets.QMainWindow()
+        self.ui = Ui_Menu()
+        self.ui.setupUi(self.menu)
+        self.menu.show()
+
     def setupUi(self, Visualizar):
         Visualizar.setObjectName("Visualizar")
         Visualizar.resize(829, 712)
@@ -20,7 +27,7 @@ class Ui_Visualizar(object):
         font.setPointSize(2)
         Visualizar.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/Img/reveja (2).png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("screens/reveja (2).png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Visualizar.setWindowIcon(icon)
         Visualizar.setStyleSheet("background-color: rgb(61, 61, 61);\n"
 "")
@@ -29,7 +36,7 @@ class Ui_Visualizar(object):
         self.centralwidget.setObjectName("centralwidget")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(70, 230, 151, 111))
-        self.label.setStyleSheet("image: url(:/Img/Downloads/voto-positivo.png);")
+        self.label.setStyleSheet("image: url(screens/voto-positivo.png);")
         self.label.setText("")
         self.label.setObjectName("label")
         self.main_txt_2 = QtWidgets.QLabel(self.centralwidget)
@@ -45,12 +52,12 @@ class Ui_Visualizar(object):
         self.main_txt_2.setObjectName("main_txt_2")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(330, 230, 151, 111))
-        self.label_2.setStyleSheet("image: url(:/Img/Downloads/voto-negativo.png);")
+        self.label_2.setStyleSheet("image: url(screens/voto-negativo.png);")
         self.label_2.setText("")
         self.label_2.setObjectName("label_2")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(590, 230, 151, 111))
-        self.label_4.setStyleSheet("image: url(:/Img/ruim.png);")
+        self.label_4.setStyleSheet("image: url('screens/ruim.png');")
         self.label_4.setText("")
         self.label_4.setScaledContents(False)
         self.label_4.setObjectName("label_4")
@@ -119,5 +126,6 @@ class Ui_Visualizar(object):
         self.pushButton_2.setText(_translate("Visualizar", "Avaliações Negativas"))
         self.pushButton_3.setText(_translate("Visualizar", "Avaliações Impróprias"))
         self.pushButton_4.setText(_translate("Visualizar", "Voltar"))
+        self.pushButton_4.clicked.connect(self.back_to_menu)
+        self.pushButton_4.clicked.connect(Visualizar.close)
         self.label_3.setText(_translate("Visualizar", "Selecione o tipo de avaliação que deseja visualizar:"))
-import imgs_rc

@@ -12,6 +12,14 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from utils.classify_msg import classify
 
 class Ui_Avaliation(object):
+    
+    def back_to_menu(self):
+        from .main_menu import Ui_Menu 
+        self.menu = QtWidgets.QMainWindow()
+        self.ui = Ui_Menu()
+        self.ui.setupUi(self.menu)
+        self.menu.show()
+
     def setupUi(self, Avaliation):
         Avaliation.setObjectName("Avaliation")
         Avaliation.resize(765, 669)
@@ -19,7 +27,7 @@ class Ui_Avaliation(object):
         Avaliation.setMaximumSize(QtCore.QSize(765, 669))
         Avaliation.setWindowTitle("Avaliação")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/Img/reveja (2).png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("screens/reveja (2).png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Avaliation.setWindowIcon(icon)
         Avaliation.setStyleSheet("background-color: rgb(48, 48, 48);")
         Avaliation.setDockNestingEnabled(False)
@@ -211,6 +219,9 @@ class Ui_Avaliation(object):
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("background-color: rgb(103, 255, 128);")
         self.pushButton.setObjectName("pushButton")
+        self.pushButton.clicked.connect(lambda: classify(self.plainTextEdit.toPlainText()))
+        self.pushButton.clicked.connect(self.back_to_menu)
+        self.pushButton.clicked.connect(Avaliation.close)
         self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_2.setGeometry(QtCore.QRect(110, 500, 131, 41))
         palette = QtGui.QPalette()
@@ -364,6 +375,8 @@ class Ui_Avaliation(object):
         self.pushButton_2.setFont(font)
         self.pushButton_2.setStyleSheet("background-color: rgb(70, 175, 255);")
         self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton_2.clicked.connect(self.back_to_menu)
+        self.pushButton_2.clicked.connect(Avaliation.close)
         Avaliation.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(Avaliation)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 765, 26))
@@ -374,7 +387,7 @@ class Ui_Avaliation(object):
         Avaliation.setStatusBar(self.statusbar)
 
         self.retranslateUi(Avaliation)
-        self.pushButton.clicked.connect(lambda: classify(self.plainTextEdit.toPlainText()))
+        # self.plainTextEdit.clear()
         QtCore.QMetaObject.connectSlotsByName(Avaliation)
 
     def retranslateUi(self, Avaliation):

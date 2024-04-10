@@ -9,16 +9,31 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from .avaliation_screen import Ui_Avaliation
+from .visualize import Ui_Visualizar
 
 
 class Ui_Menu(object):
+    
+    def avaliation_screen_show(self):
+        self.av_wnd = QtWidgets.QMainWindow()
+        self.ui = Ui_Avaliation()
+        self.ui.setupUi(self.av_wnd)
+        self.av_wnd.show()
+
+    def visualize_screen_show(self):
+        self.view_wnd = QtWidgets.QMainWindow()
+        self.ui = Ui_Visualizar()
+        self.ui.setupUi(self.view_wnd)
+        self.view_wnd.show()
+
     def setupUi(self, Menu):
         Menu.setObjectName("Menu")
         Menu.resize(800, 600)
         Menu.setMinimumSize(QtCore.QSize(800, 600))
         Menu.setMaximumSize(QtCore.QSize(800, 600))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/Img/reveja (2).png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("screens/reveja (2).png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Menu.setWindowIcon(icon)
         Menu.setStyleSheet("background-color: rgb(61, 61, 61);")
         self.centralwidget = QtWidgets.QWidget(Menu)
@@ -35,6 +50,8 @@ class Ui_Menu(object):
         self.main_txt.setObjectName("main_txt")
         self.avaliation_btn = QtWidgets.QPushButton(self.centralwidget)
         self.avaliation_btn.setGeometry(QtCore.QRect(290, 160, 201, 61))
+        self.avaliation_btn.clicked.connect(self.avaliation_screen_show)
+        self.avaliation_btn.clicked.connect(Menu.close)
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(8)
@@ -45,6 +62,8 @@ class Ui_Menu(object):
         self.avaliation_btn.setObjectName("avaliation_btn")
         self.view_avaliation_btn = QtWidgets.QPushButton(self.centralwidget)
         self.view_avaliation_btn.setGeometry(QtCore.QRect(290, 250, 201, 71))
+        self.view_avaliation_btn.clicked.connect(self.visualize_screen_show)
+        self.view_avaliation_btn.clicked.connect(Menu.close)
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setBold(True)
@@ -70,4 +89,3 @@ class Ui_Menu(object):
         self.main_txt.setText(_translate("Menu", "MetricsManager"))
         self.avaliation_btn.setText(_translate("Menu", "Deixar Avaliação (Usuário)"))
         self.view_avaliation_btn.setText(_translate("Menu", "Visualizar Avaliações (Admin)"))
-import imgs_rc
