@@ -9,7 +9,8 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from utils.view_archive import open_archive, is_file_open
+import os
 
 class Ui_Visualizar(object):
     def back_to_menu(self):
@@ -18,6 +19,17 @@ class Ui_Visualizar(object):
         self.ui = Ui_Menu()
         self.ui.setupUi(self.menu)
         self.menu.show()
+
+    def warning_archive_open(self):
+        msg = QtWidgets.QMessageBox()
+        msg.setText("Não existem registros desse tipo de avaliação")
+        msg.exec_()
+
+    def try_open_archive(self, archive_name):
+        if os.path.exists(archive_name):
+            os.system(f"start notepad {archive_name}")
+        else:
+            self.warning_archive_open()
 
     def setupUi(self, Visualizar):
         Visualizar.setObjectName("Visualizar")
@@ -61,45 +73,45 @@ class Ui_Visualizar(object):
         self.label_4.setText("")
         self.label_4.setScaledContents(False)
         self.label_4.setObjectName("label_4")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(80, 360, 131, 41))
+        self.view_positives_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.view_positives_btn.setGeometry(QtCore.QRect(80, 360, 131, 41))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("background-color: rgb(117, 112, 214);")
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(340, 360, 131, 41))
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI")
-        font.setPointSize(7)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setStyleSheet("background-color: rgb(245, 140, 121);")
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(600, 360, 131, 41))
+        self.view_positives_btn.setFont(font)
+        self.view_positives_btn.setStyleSheet("background-color: rgb(117, 112, 214);")
+        self.view_positives_btn.setObjectName("view_positives_btn")
+        self.view_negatives_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.view_negatives_btn.setGeometry(QtCore.QRect(340, 360, 131, 41))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(7)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setStyleSheet("background-color: rgb(242, 107, 56);")
-        self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(10, 620, 81, 31))
+        self.view_negatives_btn.setFont(font)
+        self.view_negatives_btn.setStyleSheet("background-color: rgb(245, 140, 121);")
+        self.view_negatives_btn.setObjectName("view_negatives_btn")
+        self.view_inapropriates_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.view_inapropriates_btn.setGeometry(QtCore.QRect(600, 360, 131, 41))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(7)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setStyleSheet("background-color: rgb(85, 255, 127);")
-        self.pushButton_4.setObjectName("pushButton_4")
+        self.view_inapropriates_btn.setFont(font)
+        self.view_inapropriates_btn.setStyleSheet("background-color: rgb(242, 107, 56);")
+        self.view_inapropriates_btn.setObjectName("view_inapropriates_btn")
+        self.back_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.back_btn.setGeometry(QtCore.QRect(10, 620, 81, 31))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(7)
+        font.setBold(True)
+        font.setWeight(75)
+        self.back_btn.setFont(font)
+        self.back_btn.setStyleSheet("background-color: rgb(85, 255, 127);")
+        self.back_btn.setObjectName("back_btn")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(150, 160, 531, 61))
         font = QtGui.QFont()
@@ -116,16 +128,19 @@ class Ui_Visualizar(object):
         Visualizar.setMenuBar(self.menubar)
 
         self.retranslateUi(Visualizar)
+        self.view_positives_btn.clicked.connect(lambda: self.try_open_archive("avaliaçoes_positivas.txt"))
+        self.view_negatives_btn.clicked.connect(lambda: self.try_open_archive("avaliaçoes_negativas.txt"))
+        self.view_inapropriates_btn.clicked.connect(lambda: self.try_open_archive("avaliaçoes_impróprias.txt"))
+        self.back_btn.clicked.connect(self.back_to_menu)
+        self.back_btn.clicked.connect(Visualizar.close)
         QtCore.QMetaObject.connectSlotsByName(Visualizar)
 
     def retranslateUi(self, Visualizar):
         _translate = QtCore.QCoreApplication.translate
         Visualizar.setWindowTitle(_translate("Visualizar", "Visualizar"))
         self.main_txt_2.setText(_translate("Visualizar", "MetricsManager"))
-        self.pushButton.setText(_translate("Visualizar", "Avaliações Positivas"))
-        self.pushButton_2.setText(_translate("Visualizar", "Avaliações Negativas"))
-        self.pushButton_3.setText(_translate("Visualizar", "Avaliações Impróprias"))
-        self.pushButton_4.setText(_translate("Visualizar", "Voltar"))
-        self.pushButton_4.clicked.connect(self.back_to_menu)
-        self.pushButton_4.clicked.connect(Visualizar.close)
+        self.view_positives_btn.setText(_translate("Visualizar", "Avaliações Positivas"))
+        self.view_negatives_btn.setText(_translate("Visualizar", "Avaliações Negativas"))
+        self.view_inapropriates_btn.setText(_translate("Visualizar", "Avaliações Impróprias"))
+        self.back_btn.setText(_translate("Visualizar", "Voltar"))
         self.label_3.setText(_translate("Visualizar", "Selecione o tipo de avaliação que deseja visualizar:"))
