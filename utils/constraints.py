@@ -15,8 +15,4 @@ negative_avaliation = [
     "incompatível", "lento para responder", "não amigável", "obsoleto", "não otimizado", "propenso a erros"
     "errado", "erroneo"]
 
-innapropriate_avaliation = [
-    "porra", "merda", "bosta", "porcaria","brocha","cracudo",
-    "filho da puta", "puta", "puto", "galinha", "piranha", "vagabundo",
-    "caralho", "foder", "cu", "corno", "fodido", "cachorro", "canalha",
-    "escroto", "trouxa", "vaca"]
+
